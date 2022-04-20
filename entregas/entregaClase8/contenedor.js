@@ -116,13 +116,13 @@ class Contenedor {
 
 
 
-let archivos = new Contenedor(nombreArchivo);
+/* let archivos = new Contenedor(nombreArchivo);
 
 archivos.save({
-  id: count,
+ 
   title: "fernando",
   price: 1200,
   thumbnail: "sgsdfsdg",
 });
-//archivos.getAll();
+//archivos.getAll(); */
 module.exports= Contenedor
