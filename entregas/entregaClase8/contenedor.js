@@ -35,9 +35,11 @@ class Contenedor {
           const productos = this.getAll()
   
               if(typeof productos == "object"){
-  
+                console.log(productos)
+                console.log(id)
+                console.log(productos.find(el=> el.id === id))
                   if(typeof id === "number" && id <= productos.length && id > 0 ) return productos.find(el=> el.id === id)
-  
+                  
               return `El id: ${id} es inválido.`
   
               }else{

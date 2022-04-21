@@ -6,7 +6,10 @@ let productos =[ ]
 
 //let{nombre,apellido,edad}=personas
 
-router.get("/", (req, res) => {
+
+
+
+ router.get("/", (req, res) => {
   res.send(productos);
 });
 

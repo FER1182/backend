@@ -7,8 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
-        
+    <h1>Agregado de Productos</h1>
+    <form action="/" enctype="multipart/form-data" method="post">
+        <label for="POST-name">Item</label>
+        <input type="text" name="name">
+        <br>
+        <label for="POST-name">Precio</label>
+        <input type="number" name="price">
+        <br>
+        <label for="POST-file">Img</label>
+        <input type="file" name="upload_file">
+        <div>
+            <input type="submit" value="save">
+        </div>
     </form>
 </body>
 </html>
