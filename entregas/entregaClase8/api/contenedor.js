@@ -35,13 +35,11 @@ class Contenedor {
           const productos = this.getAll()
   
               if(typeof productos == "object"){
-                console.log(productos)
-                console.log(id)
-                console.log(productos.find(el=> el.id === id))
-                  if(typeof id === "number" && id <= productos.length && id > 0 ) return productos.find(el=> el.id === id)
+                const idNumero= Number(id);
+                  if(typeof idNumero === "number" && idNumero <= productos.length && idNumero > 0 ) return productos.filter(el=> el.id === idNumero)
                   
               return `El id: ${id} es inválido.`
-  
+                  
               }else{
   
                   return `No existe el archivo ${this.nombre}.`
@@ -73,14 +71,14 @@ class Contenedor {
   
       //Elimina del archivo el objeto con el id buscado
   
-  deleteById(id){
+  deleteById(idString){
 
 
     
         const productos = this.getAll()
     
             if(typeof productos == "object"){
-    
+             let id = Number(idString); 
             if(typeof id === "number" && id <= productos.length && id > 0 ) {
     
                 const newInfo= productos.filter(el=> el.id !==id)
