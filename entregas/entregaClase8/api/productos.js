@@ -23,15 +23,17 @@ let storage = multer.diskStorage({
 
 let upload = multer({ storage });
 
-router.post("/", (req, res) => {
-    
+router.post("/",upload.single("myfile"), (req, res) => {
+    let file = req.file
+    if(!file){
+        res.status(400).send({message:"Error al cargar"})
+    }
     let newProduct = {
         name: req.body.name,
         price: req.body.price,
-        img: req.body.thumbnail
+        img: req.file.path
     }
-    console.log(req.body.name)
-    console.log(newProduct)
+    console.log(req.file)
     let idProductoAgregado = archivo.save(newProduct)
     console.log(idProductoAgregado)
     res.send(`El archivo se guardo correctamente y el id del nuevo productos es ${idProductoAgregado}`)

@@ -11,10 +11,11 @@ class Contenedor {
     save(obj) {
       try {
         let siExiste = this.getAll();
-        if (typeof siExiste == "objet") {
+        if (typeof siExiste == "object") {
           siExiste.length > 0
             ? (obj.id = siExiste[siExiste.length - 1].id + 1)
             : (obj.id = 1);
+           
           siExiste.push(obj);
           fs.writeFileSync(`./${this.nombre}`, JSON.stringify(siExiste));
           return obj.id;
