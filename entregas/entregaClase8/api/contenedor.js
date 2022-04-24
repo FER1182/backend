@@ -110,7 +110,38 @@ class Contenedor {
       
       return `Todos los objetos del archivo ‘${this.nombre}’ fueron eliminados`
       
-      }   
+    }
+    
+    putById(idString,obj){
+      try{
+  
+        const productos = this.getAll()
+            
+            if(typeof productos == "object"){
+              const id= Number(idString);
+              
+                if(typeof id === "number" && id <= productos.length && id> 0 ) {
+                let posicion =  productos.findIndex(el=> el.id === id)
+                  productos[posicion].name=obj.name;
+                  productos[posicion].price=obj.price;
+                  productos[posicion].name=obj.img;
+                  fs.writeFileSync( `./${this.nombre}`, JSON.stringify(productos))
+                  return `el producto ${id} fue actualizado con exito`
+                }else
+            return `El id: ${id} es inválido.`
+                
+            }else{
+
+                return `No existe el archivo ${this.nombre}.`
+            }
+
+        }
+
+    catch(e){
+
+    return e
+    }
+    }
 
 
 }

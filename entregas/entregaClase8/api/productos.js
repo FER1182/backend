@@ -35,7 +35,6 @@ router.post("/",upload.single("myfile"), (req, res) => {
     }
     console.log(req.file)
     let idProductoAgregado = archivo.save(newProduct)
-    console.log(idProductoAgregado)
     res.send(`El archivo se guardo correctamente y el id del nuevo productos es ${idProductoAgregado}`)
 });
 
@@ -43,9 +42,27 @@ router.post("/",upload.single("myfile"), (req, res) => {
 router.get("/:id", async(req, res) => {
   let data = await archivo.getById(req.params.id);
   res.json(data);
+});
+
+
+router.delete("/:id", async(req, res) => {
+  let data = await archivo.deleteById(req.params.id);
+  res.json(data);
   //res.send(productos);
 });
 
+router.put("/:id", async(req, res) => {
+  let newProduct = {
+    name: req.body.name,
+    price: req.body.price,
+    img: req.body.img
+}
+
+  let data = await archivo.putById(req.params.id,newProduct);
+  res.json(data)
+  
+  
+});
 
 
 module.exports = router
