@@ -6,6 +6,10 @@ const app = express();
 //data
 let msn = [];
 
+//para servidor en la nube
+
+const port = process.env.PORT || 8080
+
 //archivos estaticos
 app.use(express.static(__dirname + "/public"));
 
@@ -36,6 +40,6 @@ io.on("connection", (socket) => {
 
 app.use("/api", router);
 
-server.listen(8080, () => {
+server.listen(port, () => {
   console.log("server oks");
 });
